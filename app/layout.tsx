@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from './components/Nav'
+import SectionThree from './components/SectionThree'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,23 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         {children}
+
+        <SectionThree className='bg-gray-900'>
+          <div className='grid md:grid-cols-2 grid-cols-1 gap-8 mx-8'>
+            <div>
+              <h1 className='text-blue-400 capitalize font-bold text-3xl mb-4'>website.com</h1>
+              <p className='text-white'>
+                <b>Address</b><br />
+                821 Bhabbad Chowk, Palam Vihar Road Crossing, Najafgarh Road,, Bijwasan, New Delhi, Delhi 110061 Cont No. +91 8376846429, 9958799542,
+
+                <br />
+                <b>Contact</b><br />
+                Email Id : sales@travstories@gmail.com, operation1.travstories@gmail.com
+              </p>
+            </div>
+            <div className='text-white'>Branches – Mumbai , Jaipur, Diu</div>
+          </div>
+        </SectionThree>
       </body>
     </html>
   )

@@ -17,7 +17,7 @@ const images = [
 
 export default function Home() {
   return (
-    <div>
+    <div className='csFadeInUp'>
       <Header />
       <SectionOne />
       <SectionTwo />
@@ -49,22 +49,6 @@ export default function Home() {
 
         <div className='flex'>
           <button className='bg-blue-500 text-white mx-auto px-5 py-3 mt-16'>Book Now</button>
-        </div>
-      </SectionThree>
-      <SectionThree className='bg-gray-900'>
-        <div className='grid md:grid-cols-2 grid-cols-1 gap-8 mx-8'>
-          <div>
-            <h1 className='text-blue-400 capitalize font-bold text-3xl mb-4'>website.com</h1>
-            <p className='text-white'>
-              <b>Address</b><br />
-              821 Bhabbad Chowk, Palam Vihar Road Crossing, Najafgarh Road,, Bijwasan, New Delhi, Delhi 110061 Cont No. +91 8376846429, 9958799542,
-
-              <br />
-              <b>Contact</b><br />
-              Email Id : sales@travstories@gmail.com, operation1.travstories@gmail.com
-            </p>
-          </div>
-          <div className='text-white'>Branches – Mumbai , Jaipur, Diu</div>
         </div>
       </SectionThree>
     </div>

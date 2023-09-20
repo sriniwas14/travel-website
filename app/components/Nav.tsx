@@ -2,18 +2,19 @@
 
 import { Odor_Mean_Chey } from 'next/font/google'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaFacebookF, FaTwitter, FaGooglePlus, FaMarker, FaEnvelope, FaPhone, FaHamburger } from 'react-icons/fa'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { usePathname } from 'next/navigation'
 
 
 const odorMean = Odor_Mean_Chey({ weight: ['400'], subsets: ['latin'] })
 
 const navItems = [
     { id: 1, title: "Home", url: "/" },
-    { id: 2, title: "Indian Destination", url: "/" },
-    { id: 3, title: "Travel Abroad", url: "/" },
-    { id: 4, title: "Contact Us", url: "/" }
+    { id: 2, title: "Indian Destination", url: "/indian-destination" },
+    { id: 3, title: "Travel Abroad", url: "/travel-abroad" },
+    { id: 4, title: "Contact Us", url: "/contact-us" }
 ]
 
 const socialItems = [
@@ -30,10 +31,15 @@ const lowerHeaderItems = [
 
 export default function Nav() {
     const [collapsed, setCollapsed] = useState(true);
+    const pathname = usePathname()
+
+    useEffect(() => {
+        setCollapsed(true)
+    }, [pathname])
 
     return (
         <div>
-            <div className='md:container mx-4 md:mx-auto md:flex my-4 md:my-8'>
+            <div className='md:container-lg lg:container-lg xl:container mx-4 md:mx-auto md:flex my-4 md:my-8'>
                 <div className='flex'>
                     <div className='flex'><div className='my-auto text-2xl'>Website.com</div></div>
                     <div className='ml-auto mt-1 md:mt-0 md:hidden block'>
@@ -42,10 +48,10 @@ export default function Nav() {
                         </button>
                     </div>
                 </div>
-                <div className={`md:flex bg-white absolute left-0 right-0 md:static p-6 md:p-0 flex-col md:flex-row ml-auto collapseMenu ${!collapsed ? "" : "hidden"}`}>
+                <div className={`md:flex bg-white z-10 absolute left-0 right-0 md:static p-6 md:p-0 flex-col md:flex-row ml-auto collapseMenu ${!collapsed ? "" : "hidden"}`}>
                     <div className='md:ml-auto  md:mt-3 md:flex'>
                         {
-                            navItems.map(item => <Link key={item.id} className={`${odorMean.className} md:ml-10 ml-2 hover:text-primaryColor text-lg block transition-all py-3 md:py-1`} href={item.url}>{item.title}</Link>)
+                            navItems.map(item => <Link key={item.id} className={`${odorMean.className} md:ml-10 ml-2 hover:text-primaryColor ${pathname !== item.url ? "" : "text-primaryColor"} text-lg block transition-all py-3 md:py-1`} href={item.url}>{item.title}</Link>)
                         }
                     </div>
                     <div className='flex mt-2 md:ml-4'>
@@ -56,7 +62,7 @@ export default function Nav() {
                 </div>
             </div>
             <div className='bg-primaryColor py-4 px-4'>
-                <div className='md:container md:flex text-white mx-4 mx-auto'>
+                <div className='md:container-lg lg:container-lg xl:container md:flex text-white mx-4 mx-auto'>
                     {
                         lowerHeaderItems.map(item => <div key={item.id} className='flex mr-16'><div className='mt-1 mr-2'>{item.icon}</div> {item.text}</div>)
                     }

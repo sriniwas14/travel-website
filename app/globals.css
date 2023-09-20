@@ -32,3 +32,21 @@
     display: none;
   }
 }
+
+.csFadeInUp {
+  animation: fadeInUp ease 0.4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
