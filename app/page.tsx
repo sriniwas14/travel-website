@@ -7,12 +7,12 @@ import Headline from './components/Headline'
 import BodyText from './components/BodyText'
 
 const images = [
-  "/assets/1.jpg",
-  "/assets/2.jpg",
-  "/assets/3.jpg",
-  "/assets/3.jpg",
-  "/assets/1.jpg",
-  "/assets/2.jpg"
+  { image: "/assets/1.jpg", id: 1 },
+  { image: "/assets/2.jpg", id: 2 },
+  { image: "/assets/3.jpg", id: 3 },
+  { image: "/assets/3.jpg", id: 4 },
+  { image: "/assets/1.jpg", id: 5 },
+  { image: "/assets/2.jpg", id: 6 }
 ]
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
 
         <div className='grid grid-cols-3 gap-5 bg-white mt-10'>
           {
-            images.map(image => <img src={image} />)
+            images.map(image => <img src={image.image} key={image.id} />)
           }
         </div>
       </SectionThree>

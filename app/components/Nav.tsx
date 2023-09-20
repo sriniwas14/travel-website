@@ -1,7 +1,10 @@
+"use client"
+
 import { Odor_Mean_Chey } from 'next/font/google'
 import Link from 'next/link'
-import React from 'react'
-import { FaFacebookF, FaTwitter, FaGooglePlus, FaMarker, FaEnvelope, FaPhone } from 'react-icons/fa'
+import React, { useState } from 'react'
+import { FaFacebookF, FaTwitter, FaGooglePlus, FaMarker, FaEnvelope, FaPhone, FaHamburger } from 'react-icons/fa'
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 
 const odorMean = Odor_Mean_Chey({ weight: ['400'], subsets: ['latin'] })
@@ -26,23 +29,34 @@ const lowerHeaderItems = [
 ]
 
 export default function Nav() {
+    const [collapsed, setCollapsed] = useState(true);
+
     return (
         <div>
-            <div className='container mx-auto flex my-8'>
-                <div>Logo</div>
-                <div className='ml-auto flex'>
-                    {
-                        navItems.map(item => <Link key={item.id} className={`${odorMean.className} ml-10 hover:text-primaryColor text-lg transition-all py-1`} href={item.url}>{item.title}</Link>)
-                    }
+            <div className='md:container mx-4 md:mx-auto md:flex my-4 md:my-8'>
+                <div className='flex'>
+                    <div className='flex'><div className='my-auto text-2xl'>Website.com</div></div>
+                    <div className='ml-auto mt-1 md:mt-0 md:hidden block'>
+                        <button onClick={() => setCollapsed((value) => !value)} className="px-2">
+                            <AiOutlineMenu size={30} />
+                        </button>
+                    </div>
                 </div>
-                <div className='flex ml-4'>
-                    {
-                        socialItems.map(item => <Link key={item.id} className={'px-3 py-3 bg-primaryColor text-white rounded-full mx-1'} href={item.href}>{item.icon}</Link>)
-                    }
+                <div className={`md:flex bg-white absolute left-0 right-0 md:static p-6 md:p-0 flex-col md:flex-row ml-auto collapseMenu ${!collapsed ? "" : "hidden"}`}>
+                    <div className='md:ml-auto  md:mt-3 md:flex'>
+                        {
+                            navItems.map(item => <Link key={item.id} className={`${odorMean.className} md:ml-10 ml-2 hover:text-primaryColor text-lg block transition-all py-3 md:py-1`} href={item.url}>{item.title}</Link>)
+                        }
+                    </div>
+                    <div className='flex mt-2 md:ml-4'>
+                        {
+                            socialItems.map(item => <Link key={item.id} className={'px-3 py-3 bg-primaryColor text-white rounded-full mx-1'} href={item.href}>{item.icon}</Link>)
+                        }
+                    </div>
                 </div>
             </div>
-            <div className='bg-primaryColor py-4'>
-                <div className='container text-white flex mx-auto'>
+            <div className='bg-primaryColor py-4 px-4'>
+                <div className='md:container md:flex text-white mx-4 mx-auto'>
                     {
                         lowerHeaderItems.map(item => <div key={item.id} className='flex mr-16'><div className='mt-1 mr-2'>{item.icon}</div> {item.text}</div>)
                     }
