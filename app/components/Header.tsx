@@ -1,7 +1,14 @@
+"use client"
+
 import React from 'react'
 import bgImage from '../assets/header_background.jpg'
 
 export default function Header() {
+    const manageBlur = (event: any) => {
+        if (event.target.value) return
+        event.target.type = 'text'
+    }
+
     return (
         <div className='flex' style={{ background: `url('${bgImage.src}')`, height: '80vh', backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
             <div className='md:w-1/2 m-auto text-center py-10'>
@@ -15,8 +22,8 @@ export default function Header() {
                             <option value="2">3-5 People</option>
                             <option value="3">5+ People</option>
                         </select>
-                        <input type="date" className='w-full p-3 mb-2 md:mb-0' placeholder='Arrival Date' />
-                        <input type="date" className='w-full p-3 mb-2 md:mb-0' placeholder='Leave Date' />
+                        <input type="text" onBlur={manageBlur} onFocus={(e) => e.target.type = "date"} className='w-full p-3 mb-2 md:mb-0' placeholder='Arrival Date' />
+                        <input type="text" onBlur={manageBlur} onFocus={(e) => e.target.type = "date"} className='w-full p-3 mb-2 md:mb-0' placeholder='Leave Date' />
                     </div>
                     <input placeholder='Phone No' type="text" className='w-full p-3 mt-3' />
                     <button className='w-full p-3 hover:bg-blue-400 transition-all mt-3 bg-blue-500 text-white'>Get Free Tour Details Now</button>
